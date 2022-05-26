@@ -1,7 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
   <header>
     <img
@@ -11,12 +7,12 @@ import { RouterLink, RouterView } from "vue-router";
       width="125"
       height="125"
     />
-
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
   </header>
-
-  <RouterView />
+  <avg-temp-history />
 </template>
+<script>
+import AvgTempHistory from "@/components/AvgTempHistory.vue";
+export default {
+  components: { AvgTempHistory },
+};
+</script>
