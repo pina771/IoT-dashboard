@@ -8,11 +8,12 @@
       height="125"
     />
   </header>
-  <avg-temp-history />
+  <home-view />
 </template>
 <script>
 import AvgTempHistory from "@/components/AvgTempHistory.vue";
+import HomeView from "./views/HomeView.vue";
 export default {
-  components: { AvgTempHistory },
+  components: { HomeView },
 };
 </script>

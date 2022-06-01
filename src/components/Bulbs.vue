@@ -14,7 +14,6 @@
   </div>
 </template>
 
-
 <script>
 import Toggle from "@vueform/toggle";
 import { computed } from "@vue/runtime-core";
@@ -31,8 +30,8 @@ export default {
   },
   data() {
     return {
-      value1: true,   //bulbs[1] ?
-      value2: true,   //bulbs[2]
+      value1: true, //bulbs[1] ?
+      value2: true, //bulbs[2]
       value3: true,
     };
   },
@@ -61,7 +60,6 @@ export default {
     this.bulbs = await this.fetchBulbStatus();
     console.log(this.bulbs);
   },
-
 };
 </script>
 

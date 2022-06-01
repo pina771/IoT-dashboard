@@ -1,0 +1,116 @@
+<template>
+  <Line
+    :chart-options="chartOptions"
+    :chart-data="chartData"
+    :chart-id="chartId"
+    :dataset-id-key="datasetIdKey"
+    :css-classes="cssClasses"
+    :styles="styles"
+    :width="width"
+    :height="height"
+  />
+</template>
+
+<script>
+import { Line } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  PointElement,
+  Decimation,
+} from "chart.js";
+import { dummyData2, dummyData, generateData } from "@/data.js";
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  PointElement,
+  Decimation,
+);
+
+import "chartjs-adapter-date-fns";
+
+const decimation = {
+  enabled: true,
+  algorithm: "lttb",
+  samples: 40,
+};
+
+export default {
+  name: "LineChart",
+  components: { Line },
+  props: {
+    chartId: {
+      type: String,
+      default: "line-chart-1",
+    },
+    datasetIdKey: {
+      type: String,
+      default: "label",
+    },
+    width: {
+      type: Number,
+      default: 400,
+    },
+    height: {
+      type: Number,
+      default: 400,
+    },
+    cssClasses: {
+      default: "",
+      type: String,
+    },
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    dataProp: {
+      type: Array,
+      default: () => [],
+    },
+    decimate: { type: Boolean, defaulte: () => true },
+  },
+  data: () => ({
+    chartData: {
+      datasets: [
+        {
+          label: "test",
+          data: null,
+        },
+      ],
+    },
+    testData: [],
+    show: false,
+    chartOptions: {
+      responsive: false,
+      parsing: false,
+      scales: {
+        x: {
+          type: "time",
+        },
+      },
+      plugins: { decimation: decimation },
+    },
+  }),
+
+  mounted() {
+    this.show = false;
+    this.testData = this.dataProp;
+
+    this.chartData.datasets[0].data = this.testData;
+    this.show = true;
+  },
+};
+</script>
+
+<style></style>
