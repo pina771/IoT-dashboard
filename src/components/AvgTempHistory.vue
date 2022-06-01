@@ -14,7 +14,6 @@
 <script>
 import BarChart from "@/components/BarChart.vue";
 import LineChart from "@/components/LineChart.vue";
-import { dummyData, generateData } from "@/data.js";
 export default {
   name: "AvgTempHistory",
   data() {
@@ -25,7 +24,7 @@ export default {
       last24Hrs: [],
     };
   },
-  components: { BarChart, LineChart },
+  components: { LineChart },
 
   methods: {
     async fetchTempData() {

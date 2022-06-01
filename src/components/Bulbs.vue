@@ -19,6 +19,7 @@ import Toggle from "@vueform/toggle";
 import { computed } from "@vue/runtime-core";
 
 export default {
+  name: "Bulbs",
   computed: {
     regValue() {
       return value1 && value2 && value3 ? true : false;
