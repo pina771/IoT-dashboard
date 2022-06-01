@@ -14,6 +14,9 @@ export default {
     };
   },
   methods: {
+    setTimer() {
+      setInterval(() => this.fetchTemp(), 5000);
+    },
     async fetchTemp() {
       const getOptions = {
         method: "GET",
@@ -34,6 +37,7 @@ export default {
   },
   async created() {
     await this.fetchTemp();
+    this.setTimer();
   },
 };
 </script>
