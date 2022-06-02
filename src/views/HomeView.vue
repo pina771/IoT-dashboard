@@ -5,6 +5,8 @@
     <bulb-color />
   </div>
   <presence-card />
+  <current-temp-chart />
+  <bulbs />
 </template>
 
 <script>
