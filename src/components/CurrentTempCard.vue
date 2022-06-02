@@ -36,8 +36,12 @@ export default {
     },
   },
   async created() {
-    await this.fetchTemp();
-    this.setTimer();
+    if (import.meta.env.VITE_TESTIRANJE == "true") {
+      this.temp = 24.3;
+    } else {
+      await this.fetchTemp();
+      this.setTimer();
+    }
   },
 };
 </script>

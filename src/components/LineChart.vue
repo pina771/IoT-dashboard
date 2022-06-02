@@ -25,7 +25,6 @@ import {
   PointElement,
   Decimation,
 } from "chart.js";
-import { dummyData2, dummyData, generateData } from "@/data.js";
 ChartJS.register(
   Title,
   Tooltip,
@@ -44,6 +43,7 @@ const decimation = {
   enabled: true,
   algorithm: "lttb",
   samples: 40,
+  threshold: 500,
 };
 
 export default {
