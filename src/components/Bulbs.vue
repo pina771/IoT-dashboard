@@ -4,6 +4,7 @@
     <h2>Bulb 1 <Toggle v-model="value1" /></h2>
     <h2>Bulb 2 <Toggle v-model="value2" /></h2>
     <h2>Bulb 3 <Toggle v-model="value3" /></h2>
+    <h3> STANJE: {{this.bulbs}} </h3>
     <b-card
       title="Card Title"
       tag="bulbs"
@@ -19,10 +20,21 @@ import Toggle from "@vueform/toggle";
 import { computed } from "@vue/runtime-core";
 
 export default {
-  name: "Bulbs",
   computed: {
-    regValue() {
-      return value1 && value2 && value3 ? true : false;
+    regValue1() {
+      if (this.bulbs[0].state == "on") {
+        return true;
+      } else return false;
+    },
+    regValue2() {
+      if (this.bulbs[1].state == "on") {
+        return true;
+      } else return false;
+    },
+    regValue3() {
+      if (this.bulbs[2].state == "on") {
+        return true;
+      } else return false;
     },
   },
 
@@ -31,9 +43,9 @@ export default {
   },
   data() {
     return {
-      value1: true, //bulbs[1] ?
-      value2: true, //bulbs[2]
-      value3: true,
+      value1: computed.regValue1,
+      value2: computed.regValue2,
+      value3: computed.regValue3,
     };
   },
 
@@ -49,7 +61,7 @@ export default {
         },
       };
       const res = await fetch(
-        "http://10.19.128.178:8123/api/states/light.philipsbulb",
+        "http://10.19.4.140:8123/api/states/light.philipsbulb",
         getOptions,
       );
       const data = await res.json();
