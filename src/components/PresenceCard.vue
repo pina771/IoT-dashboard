@@ -1,5 +1,8 @@
 <template>
-  <div v-if="show" class="border-2 rounded-md shadow-md h-min border-slate-200">
+  <div
+    v-if="show"
+    class="border-2 rounded-md shadow-md h-min border-slate-200 my-auto"
+  >
     <div class="text-center m-auto p-2 font-bold">
       Posljednjih 10 prisustava:
     </div>
