@@ -13,6 +13,10 @@ dist
 dist-ssr
 coverage
 *.local
+.env
+
+#mock_data
+/src/mocks
 
 /cypress/videos/
 /cypress/screenshots/

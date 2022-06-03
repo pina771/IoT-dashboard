@@ -1,5 +1,5 @@
 <template>
-  <div class="border-2 w-52 h-52">
+  <div class="border-2 w-80 h-min p-4 rounded-md shadow-md bg-white">
     <div class="text-center">Temperatura</div>
     <div class="text-center">{{ temp }}</div>
     <div>Waspmote temp:</div>
@@ -7,17 +7,6 @@
     <div>Aqara temp:</div>
     <div>{{ aqaraTemp }}</div>
   </div>
-  <!-- TODO: Pokusati implementirati ovo  -->
-  <!-- <div>
-    <Line
-      v-if="show"
-      :chartData="tempArr"
-      :chartOptions="chartOptions"
-      :chart-id="'current-temp-chart'"
-      :width="400"
-      :height="400"
-    />
-  </div> -->
 </template>
 
 <script>
@@ -70,6 +59,8 @@ export default {
   async created() {
     if (import.meta.env.VITE_TESTIRANJE == "true") {
       this.temp = 24.3;
+      this.waspmoteTemp = 28.6;
+      this.aqaraTemp = 20.0;
     } else {
       await this.fetchTemp();
       this.setTimer();

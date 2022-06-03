@@ -1,15 +1,13 @@
 <template>
   <div v-if="show">
-    <h1><b>Philips bulbs</b></h1>
-    <h2>
-      Bulb 1 <Toggle v-model="status1" @click="toggleBulb('', status1)" />
-    </h2>
-    <h2>
-      Bulb 2 <Toggle v-model="status2" @click="toggleBulb('2', status2)" />
-    </h2>
-    <h2>
-      Bulb 3 <Toggle v-model="status3" @click="toggleBulb('3', status3)" />
-    </h2>
+    <div class="text-center font-bold p-2">Philips Bulbs</div>
+    <hr class="bg-slate-200 p-px h-0.5 w-4/5 ml-auto mr-auto" />
+
+    <div class="flex justify-around mt-2">
+      <h2>B1 <Toggle v-model="status1" @click="toggleBulb('', status1)" /></h2>
+      <h2>B2 <Toggle v-model="status2" @click="toggleBulb('2', status2)" /></h2>
+      <h2>B3 <Toggle v-model="status3" @click="toggleBulb('3', status3)" /></h2>
+    </div>
   </div>
 </template>
 

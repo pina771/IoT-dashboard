@@ -1,20 +1,34 @@
 <template>
-  <ColorPicker
-    :color="color"
-    @color-change="updateColor"
-    :visible-formats="['rgb']"
-    default-format="rgb"
-  />
-  <button class="p-2" @click.prevent="changeBulbColor('light.philipsbulb')">
-    Promijeni L1
-  </button>
-
-  <button class="p-2" @click.prevent="changeBulbColor('light.philipsbulb2')">
-    Promijeni L2
-  </button>
-  <button class="p-2" @click.prevent="changeBulbColor('light.philipsbulb3')">
-    Promijeni L3
-  </button>
+  <div>
+    <div class="p-2 flex flex-col items-center">
+      <ColorPicker
+        :color="color"
+        @color-change="updateColor"
+        :visible-formats="['rgb']"
+        default-format="rgb"
+      />
+    </div>
+    <div class="flex justify-around p-2 flex-wrap">
+      <button
+        class="py-2 px-8 rounded-md bg-slate-200 font-bold hover:bg-slate-700 hover:text-white"
+        @click.prevent="changeBulbColor('light.philipsbulb')"
+      >
+        B1
+      </button>
+      <button
+        class="py-2 px-8 rounded-md bg-slate-200 font-bold hover:bg-slate-700 hover:text-white"
+        @click.prevent="changeBulbColor('light.philipsbulb2')"
+      >
+        B2
+      </button>
+      <button
+        class="py-2 px-8 rounded-md bg-slate-200 font-bold hover:bg-slate-700 hover:text-white"
+        @click.prevent="changeBulbColor('light.philipsbulb3')"
+      >
+        B3
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -42,7 +56,6 @@ export default {
         entity_id: entity_id,
         rgb_color: rgb_color,
       };
-      console.log(rgb_color);
       const postOptions = {
         method: "POST",
         headers: {
@@ -54,7 +67,7 @@ export default {
         body: JSON.stringify(body),
       };
 
-      const res = await fetch(
+      await fetch(
         "http://10.19.4.140:8123/api/services/light/turn_on",
         postOptions,
       );

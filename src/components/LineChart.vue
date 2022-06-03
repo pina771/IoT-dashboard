@@ -60,11 +60,11 @@ export default {
     },
     width: {
       type: Number,
-      default: 400,
+      default: 800,
     },
     height: {
       type: Number,
-      default: 400,
+      default: 600,
     },
     cssClasses: {
       default: "",
@@ -78,13 +78,16 @@ export default {
       type: Array,
       default: () => [],
     },
-    decimate: { type: Boolean, defaulte: () => true },
+    tempLabel: {
+      type: String,
+      default: () => "Test",
+    },
   },
   data: () => ({
     chartData: {
       datasets: [
         {
-          label: "test",
+          label: null,
           data: null,
         },
       ],
@@ -92,7 +95,8 @@ export default {
     testData: [],
     show: false,
     chartOptions: {
-      responsive: false,
+      responsive: true,
+      maintainAspectRatio: true,
       parsing: false,
       scales: {
         x: {
@@ -108,6 +112,7 @@ export default {
     this.testData = this.dataProp;
 
     this.chartData.datasets[0].data = this.testData;
+    this.chartData.datasets[0].label = this.tempLabel;
     this.show = true;
   },
 };

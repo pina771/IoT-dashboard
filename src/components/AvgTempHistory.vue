@@ -1,20 +1,19 @@
 <template>
-  <div>
-    <h1>Povijesni prikaz prosječne temperature</h1>
+  <div class="col-span-2">
+    <LineChart :dataProp="tempArr" v-if="dataLoaded" :tempLabel="'Tjedan'" />
+    <LineChart
+      :dataProp="last24Hrs"
+      v-if="dataLoaded2"
+      :chartId="'line-chart-2'"
+      :tempLabel="'24h'"
+    />
   </div>
-  <LineChart :dataProp="tempArr" v-if="dataLoaded" />
-  <LineChart
-    :dataProp="last24Hrs"
-    v-if="dataLoaded2"
-    :chartId="'line-chart-2'"
-    :decimate="false"
-  />
 </template>
 
 <script>
-import BarChart from "@/components/BarChart.vue";
 import LineChart from "@/components/LineChart.vue";
-import { mockTemp24Hrs } from "@/data.js";
+import { mockTemp24Hrs } from "@/mocks/mockTempData.js";
+
 export default {
   name: "AvgTempHistory",
   data() {
@@ -113,11 +112,11 @@ export default {
   async created() {
     if (import.meta.env.VITE_TESTIRANJE == "true") {
       this.last24Hrs = this.prepareData(mockTemp24Hrs);
+      this.dataLoaded = true;
       this.dataLoaded2 = true;
     } else {
       this.tempArr = await this.fetchTempData();
       this.last24Hrs = await this.fetchLast24Hrs();
-      console.log(this.last24Hrs);
       this.dataLoaded2 = true;
       this.dataLoaded = true;
     }
