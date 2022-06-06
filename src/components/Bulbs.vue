@@ -7,35 +7,19 @@
     </div>
 
     <div class="flex justify-around mt-2">
-      <h2>B1 <Toggle v-model="status1" @click="toggleBulb('', status1)" /></h2>
-      <h2>B2 <Toggle v-model="status2" @click="toggleBulb('2', status2)" /></h2>
-      <h2>B3 <Toggle v-model="status3" @click="toggleBulb('3', status3)" /></h2>
-
-      <!-- Mozda testirati sutra ovo! -->
-      <light-bulb-icon
-        class="w-10 h-10 p-1 text-slate-400 hover:p-0 hover:text-yellow-500 cursor-pointer"
-        @click="toggleBulb('', status1)"
-      ></light-bulb-icon>
-      <light-bulb-icon
-        class="w-10 h-10 p-1 text-slate-400 hover:p-0 hover:text-yellow-500 cursor-pointer"
-        @click="toggleBulb('2', status2)"
-      ></light-bulb-icon>
-      <light-bulb-icon
-        class="w-10 h-10 p-1 text-slate-400 hover:p-0 hover:text-yellow-500 cursor-pointer"
-        @click="toggleBulb('3', status3)"
-      ></light-bulb-icon>
+      <h2><Toggle v-model="status1" @click="toggleBulb('', status1)" /></h2>
+      <h2><Toggle v-model="status2" @click="toggleBulb('2', status2)" /></h2>
+      <h2><Toggle v-model="status3" @click="toggleBulb('3', status3)" /></h2>
     </div>
   </div>
 </template>
 
 <script>
 import Toggle from "@vueform/toggle";
-import { LightBulbIcon } from "@heroicons/vue/solid";
 export default {
   name: "Bulbs",
   components: {
     Toggle,
-    LightBulbIcon,
   },
   data() {
     return {
@@ -43,8 +27,6 @@ export default {
       status1: null,
       status2: null,
       status3: null,
-
-      icon1: "",
     };
   },
 

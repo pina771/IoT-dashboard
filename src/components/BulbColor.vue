@@ -6,10 +6,11 @@
         @color-change="updateColor"
         :visible-formats="['rgb']"
         default-format="rgb"
-      />
+      >
+      </ColorPicker>
     </div>
-    <div class="flex justify-around p-2 flex-wrap">
-      <button
+    <div class="flex justify-center p-2 flex-wrap gap-4">
+      <!-- <button
         class="py-2 px-8 rounded-md bg-slate-200 font-bold dyn-color"
         @click.prevent="changeBulbColor('light.philipsbulb')"
       >
@@ -26,17 +27,31 @@
         @click.prevent="changeBulbColor('light.philipsbulb3')"
       >
         B3
-      </button>
+      </button> -->
+      <light-bulb-icon
+        class="w-10 h-10 p-1 text-slate-400 hover:p-0 bulb-color cursor-pointer"
+        @click="changeBulbColor('light.philipsbulb')"
+      ></light-bulb-icon>
+      <light-bulb-icon
+        class="w-10 h-10 p-1 text-slate-400 hover:p-0 bulb-color cursor-pointer"
+        @click.prevent="changeBulbColor('light.philipsbulb2')"
+      ></light-bulb-icon>
+      <light-bulb-icon
+        class="w-10 h-10 p-1 text-slate-400 hover:p-0 bulb-color cursor-pointer"
+        @click.prevent="changeBulbColor('light.philipsbulb3')"
+      ></light-bulb-icon>
     </div>
   </div>
 </template>
 
 <script>
 import { ColorPicker } from "vue-accessible-color-picker";
+import { LightBulbIcon } from "@heroicons/vue/solid";
 
 export default {
   components: {
     ColorPicker,
+    LightBulbIcon,
   },
   data() {
     return {
@@ -92,5 +107,8 @@ export default {
 <style scoped>
 .dyn-color:hover {
   background-color: v-bind(hoverColor);
+}
+.bulb-color:hover {
+  color: v-bind(hoverColor);
 }
 </style>
