@@ -1,12 +1,16 @@
 <template>
-  <div class="col-span-2">
-    <LineChart :dataProp="tempArr" v-if="dataLoaded" :tempLabel="'Tjedan'" />
-    <LineChart
-      :dataProp="last24Hrs"
-      v-if="dataLoaded2"
-      :chartId="'line-chart-2'"
-      :tempLabel="'24h'"
-    />
+  <div class="col-span-2 flex flex-col gap-2">
+    <div class="bg-white p-4 rounded-sm shadow-md">
+      <LineChart :dataProp="tempArr" v-if="dataLoaded" :tempLabel="'Tjedan'" />
+    </div>
+    <div class="bg-white p-4 rounded-sm shadow-md">
+      <LineChart
+        :dataProp="last24Hrs"
+        v-if="dataLoaded2"
+        :chartId="'line-chart-2'"
+        :tempLabel="'24h'"
+      />
+    </div>
   </div>
 </template>
 

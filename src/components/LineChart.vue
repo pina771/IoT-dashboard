@@ -42,8 +42,8 @@ import "chartjs-adapter-date-fns";
 const decimation = {
   enabled: true,
   algorithm: "lttb",
-  samples: 40,
-  threshold: 500,
+  samples: 10,
+  threshold: 20,
 };
 
 export default {
@@ -89,6 +89,9 @@ export default {
         {
           label: null,
           data: null,
+          borderColor: "#eb6d6d",
+          borderWidth: 2,
+          pointRadius: 2,
         },
       ],
     },

@@ -5,14 +5,16 @@
     <img :src="'src/assets/thermometer-icon.png'" class="w-8 h-8" />
     <span class="font-bold font-mono text-l"> temperatura </span>
   </div>
-  <div class="w-64 h-min rounded-sm shadow-md bg-white p-4 pt-8">
+  <div
+    class="w-64 h-min rounded-sm shadow-md bg-white border-yellow-500 border-2 p-4 pt-8"
+  >
     <div class="flex flex-col items-end">
       <div class="font-bold">Prosjek</div>
-      <div class="text-center mb-2">{{ temp }}</div>
+      <div class="text-center mb-2">{{ temp }} °C</div>
       <div>Waspmote</div>
-      <div class="mb-2">{{ waspmoteTemp }}</div>
+      <div class="mb-2">{{ waspmoteTemp }} °C</div>
       <div>Aqara</div>
-      <div>{{ aqaraTemp }}</div>
+      <div>{{ aqaraTemp }} °C</div>
     </div>
   </div>
 </template>
