@@ -1,11 +1,19 @@
 <template>
-  <div class="border-2 w-80 h-min p-4 rounded-md shadow-md bg-white">
-    <div class="text-center">Temperatura</div>
-    <div class="text-center">{{ temp }}</div>
-    <div>Waspmote temp:</div>
-    <div>{{ waspmoteTemp }}</div>
-    <div>Aqara temp:</div>
-    <div>{{ aqaraTemp }}</div>
+  <div
+    class="flex align-baseline bg-yellow-500 p-2 w-72 rounded-sm -mb-10 z-10 items-center justify-center"
+  >
+    <img :src="'src/assets/thermometer-icon.png'" class="w-8 h-8" />
+    <span class="font-bold font-mono text-l"> temperatura </span>
+  </div>
+  <div class="w-64 h-min rounded-sm shadow-md bg-white p-4 pt-8">
+    <div class="flex flex-col items-end">
+      <div class="font-bold">Prosjek</div>
+      <div class="text-center mb-2">{{ temp }}</div>
+      <div>Waspmote</div>
+      <div class="mb-2">{{ waspmoteTemp }}</div>
+      <div>Aqara</div>
+      <div>{{ aqaraTemp }}</div>
+    </div>
   </div>
 </template>
 

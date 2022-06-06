@@ -1,23 +1,41 @@
 <template>
   <div v-if="show">
-    <div class="text-center font-bold p-2">Philips Bulbs</div>
-    <hr class="bg-slate-200 p-px h-0.5 w-4/5 ml-auto mr-auto" />
+    <div class="text-center p-4 rounded-t-sm bg-formal bg-zinc-700">
+      <span class="text-white font-extrabold font-mono tracking-wider text-xl"
+        >phillips</span
+      >
+    </div>
 
     <div class="flex justify-around mt-2">
       <h2>B1 <Toggle v-model="status1" @click="toggleBulb('', status1)" /></h2>
       <h2>B2 <Toggle v-model="status2" @click="toggleBulb('2', status2)" /></h2>
       <h2>B3 <Toggle v-model="status3" @click="toggleBulb('3', status3)" /></h2>
+
+      <!-- Mozda testirati sutra ovo! -->
+      <light-bulb-icon
+        class="w-10 h-10 p-1 text-slate-400 hover:p-0 hover:text-yellow-500 cursor-pointer"
+        @click="toggleBulb('', status1)"
+      ></light-bulb-icon>
+      <light-bulb-icon
+        class="w-10 h-10 p-1 text-slate-400 hover:p-0 hover:text-yellow-500 cursor-pointer"
+        @click="toggleBulb('2', status2)"
+      ></light-bulb-icon>
+      <light-bulb-icon
+        class="w-10 h-10 p-1 text-slate-400 hover:p-0 hover:text-yellow-500 cursor-pointer"
+        @click="toggleBulb('3', status3)"
+      ></light-bulb-icon>
     </div>
   </div>
 </template>
 
 <script>
 import Toggle from "@vueform/toggle";
-
+import { LightBulbIcon } from "@heroicons/vue/solid";
 export default {
   name: "Bulbs",
   components: {
     Toggle,
+    LightBulbIcon,
   },
   data() {
     return {
@@ -25,6 +43,8 @@ export default {
       status1: null,
       status2: null,
       status3: null,
+
+      icon1: "",
     };
   },
 
@@ -86,6 +106,7 @@ export default {
       this.status3 = false;
       this.show = true;
     } else {
+      /* TODO: Ažurirati sa ikonama svjetiljki */
       this.status1 = await this.fetchBulbStatus("");
       this.status2 = await this.fetchBulbStatus("2");
       this.status3 = await this.fetchBulbStatus("3");

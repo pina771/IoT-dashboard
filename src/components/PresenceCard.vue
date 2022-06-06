@@ -1,17 +1,15 @@
 <template>
-  <div
-    v-if="show"
-    class="border-2 rounded-md shadow-md h-min border-slate-200 my-auto"
-  >
-    <div class="text-center m-auto p-2 font-bold">
-      Posljednjih 10 prisustava:
+  <div v-if="show" class="rounded-sm shadow-md h-min bg-white w-full">
+    <div class="text-center py-4 rounded-t-sm bg-circles bg-zinc-700">
+      <span class="text-white font-extrabold font-mono tracking-wider text-xl"
+        >prisustva</span
+      >
     </div>
-    <hr class="bg-slate-200 p-px h-0.5 w-4/5 ml-auto mr-auto" />
     <div class="py-2 flex flex-col gap-2 items-stretch">
       <li
         v-for="(presence, index) in last10Presences"
         :key="index"
-        class="list-none hover:bg-slate-100 text-center"
+        class="list-none text-center hover:bg-zinc-200 first:pt-2 last:pb-2"
       >
         {{ presence.last_changed }}
       </li>

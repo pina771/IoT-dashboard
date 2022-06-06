@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="p-2 flex flex-col items-center">
+    <div class="p-2 flex flex-col items-center w-fit">
       <ColorPicker
         :color="color"
         @color-change="updateColor"
@@ -10,19 +10,19 @@
     </div>
     <div class="flex justify-around p-2 flex-wrap">
       <button
-        class="py-2 px-8 rounded-md bg-slate-200 font-bold hover:bg-slate-700 hover:text-white"
+        class="py-2 px-8 rounded-md bg-slate-200 font-bold dyn-color"
         @click.prevent="changeBulbColor('light.philipsbulb')"
       >
         B1
       </button>
       <button
-        class="py-2 px-8 rounded-md bg-slate-200 font-bold hover:bg-slate-700 hover:text-white"
+        class="py-2 px-8 rounded-md bg-slate-200 font-bold dyn-color"
         @click.prevent="changeBulbColor('light.philipsbulb2')"
       >
         B2
       </button>
       <button
-        class="py-2 px-8 rounded-md bg-slate-200 font-bold hover:bg-slate-700 hover:text-white"
+        class="py-2 px-8 rounded-md bg-slate-200 font-bold dyn-color"
         @click.prevent="changeBulbColor('light.philipsbulb3')"
       >
         B3
@@ -41,12 +41,17 @@ export default {
   data() {
     return {
       color: "rgb(255 0 0 / 1)",
+      hoverColor: "rgb(255,0,0)",
     };
   },
 
   methods: {
     updateColor(eventData) {
       this.color = eventData.cssColor;
+      var values = eventData.cssColor.split("/")[0].split("(")[1].split(" ");
+      console.log(values);
+      this.hoverColor =
+        "rgb(" + values[0] + "," + values[1] + "," + values[2] + ")";
     },
 
     async changeBulbColor(idLampa) {
@@ -83,3 +88,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.dyn-color:hover {
+  background-color: v-bind(hoverColor);
+}
+</style>

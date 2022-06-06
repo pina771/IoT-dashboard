@@ -1,15 +1,13 @@
 <template>
-  <div class="grid grid-cols-5 gap-4 pt-4 pl-4 pr-4">
-    <div class="col-span-3 grid grid-cols-2 h-min gap-4">
-      <presence-card />
+  <div class="grid grid-cols-5 gap-4 pt-4 pl-4 pr-4 z-10 bg-slate-100">
+    <div class="col-span-3 grid grid-cols-2 gap-4 h-fit">
+      <div class="h-min shadow-md flex flex-col w-full bg-white rounded-sm">
+        <bulbs />
+        <bulb-color />
+      </div>
       <div class="flex flex-col gap-4 items-center">
+        <presence-card />
         <current-temp-card />
-        <div
-          class="border-2 h-min rounded-md shadow-md bg-white flex flex-col w-full"
-        >
-          <bulbs />
-          <bulb-color />
-        </div>
       </div>
     </div>
     <avg-temp-history />
