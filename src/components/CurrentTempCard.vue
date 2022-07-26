@@ -47,15 +47,21 @@ export default {
         },
       };
       const res = await fetch(
-        "http://10.19.4.140:8123/api/states/sensor.average_temperature",
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/states/sensor.average_temperature",
         getOptions,
       );
       const res2 = await fetch(
-        "http://10.19.4.140:8123/api/states/sensor.waspmotetemp",
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/states/sensor.waspmotetemp",
         getOptions,
       );
       const res3 = await fetch(
-        "http://10.19.4.140:8123/api/states/sensor.aqaratemp_temperature",
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/states/sensor.aqaratemp_temperature",
         getOptions,
       );
       const data = await res.json();

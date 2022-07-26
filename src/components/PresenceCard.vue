@@ -64,7 +64,9 @@ export default {
       };
 
       const res = await fetch(
-        "http://10.19.4.140:8123/api/history/period?filter_entity_id=binary_sensor.waspmotepir",
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/history/period?filter_entity_id=binary_sensor.waspmotepir",
         getOptions,
       );
       const data = await res.json();

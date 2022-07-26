@@ -1,14 +1,18 @@
 <template>
   <div class="col-span-2 flex flex-col gap-2">
     <div class="bg-white p-4 rounded-sm shadow-md">
-      <LineChart :dataProp="tempArr" v-if="dataLoaded" :tempLabel="'Tjedan'" />
+      <LineChart
+        :dataProp="tempArr"
+        v-if="dataLoaded"
+        :tempLabel="'AvgTemp Week'"
+      />
     </div>
     <div class="bg-white p-4 rounded-sm shadow-md">
       <LineChart
         :dataProp="last24Hrs"
         v-if="dataLoaded2"
         :chartId="'line-chart-2'"
-        :tempLabel="'24h'"
+        :tempLabel="'AvgTemp 24hrs'"
       />
     </div>
   </div>
@@ -49,7 +53,9 @@ export default {
       );
 
       const res = await fetch(
-        "http://10.19.4.140:8123/api/history/period/" +
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/history/period/" +
           lastWeek.toISOString() +
           "?filter_entity_id=sensor.average_temperature" +
           "&end_time=" +
@@ -57,15 +63,7 @@ export default {
         getOptions,
       );
       const data = await res.json();
-      var filteredData = data[0].filter((datapoint) => {
-        return datapoint.state != "unknown";
-      });
-      return filteredData.map((datapoint) => {
-        return {
-          x: Date.parse(datapoint.last_changed),
-          y: Number.parseFloat(datapoint.state),
-        };
-      });
+      return this.prepareData(data);
     },
 
     async fetchLast24Hrs() {
@@ -80,7 +78,9 @@ export default {
         },
       };
       const res = await fetch(
-        "http://10.19.4.140:8123/api/history/period?filter_entity_id=sensor.average_temperature",
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/history/period?filter_entity_id=sensor.average_temperature",
         getOptions,
       );
       const data = await res.json();
@@ -102,7 +102,10 @@ export default {
     prepareData(data) {
       console.log("PrepareData called with data:  " + data);
       var filteredData = data[0].filter((datapoint) => {
-        return datapoint.state != "unknown";
+        return (
+          datapoint.state != "unknown" &&
+          Number.parseFloat(datapoint.state) != 0.0
+        );
       });
       return filteredData.map((datapoint) => {
         return {

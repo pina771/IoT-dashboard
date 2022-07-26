@@ -88,7 +88,9 @@ export default {
       };
 
       await fetch(
-        "http://10.19.4.140:8123/api/services/light/turn_on",
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/services/light/turn_on",
         postOptions,
       );
     },

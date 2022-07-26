@@ -50,12 +50,16 @@ export default {
 
       if (status == false) {
         const res = await fetch(
-          "http://10.19.4.140:8123/api/services/light/turn_off",
+          "http://" +
+            import.meta.env.VITE_HOME_ASSISTANT_IP +
+            ":8123/api/services/light/turn_off",
           postOptions,
         );
       } else {
         const res = await fetch(
-          "http://10.19.4.140:8123/api/services/light/turn_on",
+          "http://" +
+            import.meta.env.VITE_HOME_ASSISTANT_IP +
+            ":8123/api/services/light/turn_on",
           postOptions,
         );
       }
@@ -72,7 +76,10 @@ export default {
         },
       };
       const res = await fetch(
-        "http://10.19.4.140:8123/api/states/light.philipsbulb" + bulbId,
+        "http://" +
+          import.meta.env.VITE_HOME_ASSISTANT_IP +
+          ":8123/api/states/light.philipsbulb" +
+          bulbId,
         getOptions,
       );
       const data = await res.json();

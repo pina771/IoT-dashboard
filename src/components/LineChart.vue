@@ -92,6 +92,7 @@ export default {
           borderColor: "#eb6d6d",
           borderWidth: 2,
           pointRadius: 2,
+          hoverRadius: 6,
         },
       ],
     },
